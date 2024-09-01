@@ -48,30 +48,29 @@
 
         if (query) {
             updateNavLinks(query);
-            // 기본적으로 첫 번째 링크의 콘텐츠를 로드
-            updateIframe('link1', query);
+            // 기본적으로 구글 검색 결과를 로드
+            updateIframe('google', query);
         }
 
         function updateNavLinks(query) {
             navLinks.innerHTML = `
-                <a href="#" onclick="updateIframe('link1', '${query}')">Google</a>
-                <a href="#" onclick="updateIframe('link2', '${query}')">Bing</a>
-                <a href="#" onclick="updateIframe('link3', '${query}')">Naver</a>
+                <a href="#" onclick="updateIframe('google', '${query}')">구글 검색</a>
+                <a href="#" onclick="updateIframe('bing', '${query}')">Bing 검색</a>
+                <a href="#" onclick="updateIframe('naver', '${query}')">네이버 검색</a>
             `;
         }
 
         function updateIframe(link, query) {
-            // 각 링크에 따라 다른 URL을 설정
             let url;
             switch (link) {
-                case 'link1':
-                    url = `https://google.com/search?q=${encodeURIComponent(query)}`;
+                case 'google':
+                    url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
                     break;
-                case 'link2':
-                    url = `https://example.com/page2?q=${encodeURIComponent(query)}`;
+                case 'bing':
+                    url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
                     break;
-                case 'link3':
-                    url = `https://example.com/page3?q=${encodeURIComponent(query)}`;
+                case 'naver':
+                    url = `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`;
                     break;
             }
             contentFrame.src = url;
