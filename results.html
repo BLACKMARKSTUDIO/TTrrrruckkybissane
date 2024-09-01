@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과 페이지</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        iframe {
+            flex-grow: 1;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div id="navLinks"></div>
+    </nav>
+
+    <iframe id="contentFrame" src="" title="검색 결과"></iframe>
+
+    <script>
+        const navLinks = document.getElementById('navLinks');
+        const contentFrame = document.getElementById('contentFrame');
+
+        // URL에서 검색어 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+
+        if (query) {
+            updateNavLinks(query);
+            // 기본적으로 첫 번째 링크의 콘텐츠를 로드
+            updateIframe('link1', query);
+        }
+
+        function updateNavLinks(query) {
+            navLinks.innerHTML = `
+                <a href="#" onclick="updateIframe('link1', '${query}')">링크 1</a>
+                <a href="#" onclick="updateIframe('link2', '${query}')">링크 2</a>
+                <a href="#" onclick="updateIframe('link3', '${query}')">링크 3</a>
+            `;
+        }
+
+        function updateIframe(link, query) {
+            // 각 링크에 따라 다른 URL을 설정
+            let url;
+            switch (link) {
+                case 'link1':
+                    url = `https://example.com/page1?q=${encodeURIComponent(query)}`;
+                    break;
+                case 'link2':
+                    url = `https://example.com/page2?q=${encodeURIComponent(query)}`;
+                    break;
+                case 'link3':
+                    url = `https://example.com/page3?q=${encodeURIComponent(query)}`;
+                    break;
+            }
+            contentFrame.src = url;
+        }
+    </script>
+
+</body>
+</html>
