@@ -54,9 +54,9 @@
 
         function updateNavLinks(query) {
             navLinks.innerHTML = `
-                <a href="#" onclick="updateIframe('link1', '${query}')">링크 1</a>
-                <a href="#" onclick="updateIframe('link2', '${query}')">링크 2</a>
-                <a href="#" onclick="updateIframe('link3', '${query}')">링크 3</a>
+                <a href="#" onclick="updateIframe('link1', '${query}')">Google</a>
+                <a href="#" onclick="updateIframe('link2', '${query}')">Bing</a>
+                <a href="#" onclick="updateIframe('link3', '${query}')">Naver</a>
             `;
         }
 
@@ -65,7 +65,7 @@
             let url;
             switch (link) {
                 case 'link1':
-                    url = `https://example.com/page1?q=${encodeURIComponent(query)}`;
+                    url = `https://google.com/search?q=${encodeURIComponent(query)}`;
                     break;
                 case 'link2':
                     url = `https://example.com/page2?q=${encodeURIComponent(query)}`;
