@@ -54,23 +54,23 @@
 
         function updateNavLinks(query) {
             navLinks.innerHTML = `
-                <a href="#" onclick="updateIframe('google', '${query}')">구글 검색</a>
+                <a href="#" onclick="updateIframe('duck2go', '${query}')">DuckDuckGo 검색</a>
                 <a href="#" onclick="updateIframe('bing', '${query}')">Bing 검색</a>
-                <a href="#" onclick="updateIframe('naver', '${query}')">네이버 검색</a>
+                <a href="#" onclick="updateIframe('enr', '${query}')">온리어 검색</a>
             `;
         }
 
         function updateIframe(link, query) {
             let url;
             switch (link) {
-                case 'google':
-                    url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                case 'duck2go':
+                    url = `https://duckduckgo.com/search?q=${encodeURIComponent(query)}`;
                     break;
                 case 'bing':
                     url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
                     break;
-                case 'naver':
-                    url = `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`;
+                case 'enr':
+                    url = `http://eunlir.dothome.co.kr/#gsc.tab=0&gsc.sort=&gsc.q=${encodeURIComponent(query)}`;
                     break;
             }
             contentFrame.src = url;
