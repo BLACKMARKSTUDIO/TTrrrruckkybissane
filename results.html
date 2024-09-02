@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결과 페이지</title>
+    <title>Search results</title>
     <style>
         body {
             margin: 0;
@@ -48,23 +48,23 @@
 
         if (query) {
             updateNavLinks(query);
-            // 기본적으로 구글 검색 결과를 로드
-            updateIframe('duck2go', query);
+            // 기본적으로 빙 검색 결과를 로드
+            updateIframe('bing', query);
         }
 
         function updateNavLinks(query) {
             navLinks.innerHTML = `
-                <a href="#" onclick="updateIframe('duck2go', '${query}')">DuckDuckGo 검색</a>
-                <a href="#" onclick="updateIframe('bing', '${query}')">Bing 검색</a>
-                <a href="#" onclick="updateIframe('enr', '${query}')">온리어 검색</a>
+                <a href="#" onclick="updateIframe('wikip', '${query}')">Wikipedia</a>
+                <a href="#" onclick="updateIframe('bing', '${query}')">Bing</a>
+                <a href="#" onclick="updateIframe('enr', '${query}')">Eunlir</a>
             `;
         }
 
         function updateIframe(link, query) {
             let url;
             switch (link) {
-                case 'duck2go':
-                    url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+                case 'wikip':
+                    url = `https://en.wikipedia.org/w/index.php?title=Special:Search&search=${encodeURIComponent(query)}`;
                     break;
                 case 'bing':
                     url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
