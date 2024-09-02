@@ -70,7 +70,7 @@
                     url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
                     break;
                 case 'enr':
-                    url = `http://eunlir.dothome.co.kr/#gsc.tab=0&gsc.sort=&gsc.q=${encodeURIComponent(query)}`;
+                    url = `http://eunlir.dothome.co.kr/?q=${encodeURIComponent(query)}`;
                     break;
             }
             contentFrame.src = url;
